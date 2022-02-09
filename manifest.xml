@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+  <Id>d6ddeb51-d159-4597-9ff3-c9b1e893be08</Id>
+<!-- <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+xmlns:ov="http://schemas.microsoft.com/office/contentappversionoverrides" xsi:type="ContentApp"
+> -->
+  <!-- <Id>89bb16b4-4669-4157-ad5e-4dd7ec6c20b3</Id> -->
+  <Version>1.0.0.0</Version>
+  <ProviderName>MyApp</ProviderName>
+  <DefaultLocale>fr-FR</DefaultLocale>
+  <DisplayName DefaultValue="MyApp"/>
+  <Description DefaultValue="MyApp, l'app des docteurs qui vont vite"/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/logo-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/logo-64.png"/>
+  <SupportUrl DefaultValue="https://www.MyApp.fr/help"/>
+  <AppDomains>
+    <!-- <AppDomain>https://www.MyApp.fr</AppDomain> -->
+    <AppDomain>https://localhost:3000</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Document"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3000/dialog.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <!-- <VersionOverrides xmlns="http://schemas.microsoft.com/office/contentappversionoverrides" xsi:type="VersionOverridesV1_0"> -->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <!-- <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted> -->
+          <FunctionFile resid="Dialog.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+          <!-- In Outlook on Mac, the CustomTab element is not available so you'll have to use OfficeTab instead. -->
+            <CustomTab id="MyCustomTab">
+            <!-- <OfficeTab id="TabHome"> -->
+              <Group id="CommandsGroup">
+                <Label resid="CommandsGroup.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16"/>
+                  <bt:Image size="32" resid="Icon.32x32"/>
+                  <bt:Image size="80" resid="Icon.80x80"/>
+                </Icon>
+                <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label"/>
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label"/>
+                    <Description resid="TaskpaneButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <!-- Specifies the action to perform when the user selects a Button or Menu control. -->
+                    <!-- https://docs.microsoft.com/en-us/office/dev/add-ins/reference/manifest/action -->
+                    <!-- Dialog open-->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>action</FunctionName> 
+                  </Action>
+                  <!-- <Action xsi:type="ShowTaskpane"> 
+                    <TaskpaneId>ButtonId1</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action> -->
+                </Control>
+              </Group>
+              <Label resid="CustomTab.Label" />
+            </CustomTab>
+            <!-- </OfficeTab> -->
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/logo-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/logo-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/logo-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
+        <bt:Url id="Dialog.Url" DefaultValue="https://localhost:3000/dialog.html"/>
+        <!--bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/-->
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="Commencez  2 !"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="MyApp CG"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="MyApp"/>
+        <bt:String id="CustomTab.Label" DefaultValue="MyApp"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Commencez  !"/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Cliquez pour démarrer MyApp"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

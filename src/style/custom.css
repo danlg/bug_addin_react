@@ -1,0 +1,95 @@
+.main-container {
+    margin-top: 100px;
+}
+.display-linebreak {
+    white-space: pre-line;
+}
+.custom_size {
+    font-size: x-large;
+    /* font-size: medium; */
+}
+.myapp_color {
+    color: #45ceb0;
+}
+.micro_size {
+    font-size: xx-large;
+    /* font-size: medium; */
+}
+.color_1 {
+    color: #000000;
+}
+
+.output-display {
+    background-color: #14cc7662;
+    height: 700px;
+    color: black
+}
+
+.fas, .fa {
+    cursor: pointer;
+}
+
+.background { 
+    background-color: #fdfdfd2f;
+    color: #14cc7662;
+}
+
+/* Firefox old*/
+@-moz-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        /* opacity:0.7; */
+        background-color: #45ceb0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+
+@-webkit-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        /* opacity:0.7; */
+        background-color: #45ceb0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+/* IE */
+@-ms-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        /* opacity:0.7; */
+        background-color: #45ceb0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+/* Opera and prob css3 final iteration */
+@keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        /* opacity:0.7; */
+        background-color: #45ceb0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+.blink-image {
+    -moz-animation: blink normal 2s infinite ease-in-out; /* Firefox */
+    -webkit-animation: blink normal 2s infinite ease-in-out; /* Webkit */
+    -ms-animation: blink normal 2s infinite ease-in-out; /* IE */
+    animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
+}
