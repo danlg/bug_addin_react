@@ -19,13 +19,14 @@ export default class DialogComponent extends React.Component {
         console.log('componentDidMount');
     }
 
-    writeToWord = async (text, evt) => {
-        writeToWordImpl(text)
-    }
+    // writeToWord = async (text, evt) => {
+    //     writeToWordImpl(text)
+    // }
     unit_test = async (text, evt) => {
-        console.log("Hello UNIT TEST (11)")
+        console.log("Hello UNIT TEST")
         // see https://github.com/OfficeDev/office-js-docs-pr/blob/master/docs/develop/dialog-api-in-office-add-ins.md
-        writeToWordImpl(text, evt)
+        //writeToWordImpl(text, evt)
+        Office.context.ui.messageParent("Picked 1");
     }
 
     render() {

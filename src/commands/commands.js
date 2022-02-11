@@ -47,27 +47,31 @@ export async function writeToWordImpl (text) {
     })
 }
 
-/**
- * Shows a notification when the add-in command is executed.
- * @param event {Office.AddinCommands.Event}
- */
-async function action(evt) {
+async function processMessage (arg) {
+    console.log("processMessage", arg)
+    var messageFromDialog = JSON.parse(arg.message)
+    //showUserName(messageFromDialog.name)
+    await writeToWordImpl(messageFromDialog.name)
+}
+
+ var dialog;
+ async function action(evt) {
 //   // Show a notification message
 //   Office.context.mailbox.item.notificationMessages.replaceAsync("action", message);
     console.log("INSIDE action X ")
     await writeToWordImpl("BeFoRE displayDialogAsync")
-    Office.context.ui.displayDialogAsync('https://localhost:3000/dialog.html', {
+    //Office.context.ui.displayDialogAsync('https://localhost:3000/dialog.html', {
+    Office.context.ui.displayDialogAsync(window.location.origin + '/dialog.html', {
             height: 20,
             width: 20,
             // displayInIframe: true
         },
-        async function (asyncResult) {
-            dialog = asyncResult.value;
-            //await writeToWord("iNsIDE displayDialogAsync")
-            console.log("displayDialogAsync")
-            // dialog.addEventHandler(
-            //     processMessage,
-            //     Office.EventType.DialogMessageReceived, processMessage);
+        // more details see https://docs.microsoft.com/en-us/office/dev/add-ins/develop/dialog-api-in-office-add-ins#send-information-from-the-dialog-box-to-the-host-page
+        function (asyncResult) {
+            console.log("callback displayDialogAsync called")
+            dialog = asyncResult.value
+             /*Messages are sent by developers programatically from the dialog using Office.context.ui.messageParent(...)*/
+            dialog.addEventHandler(Office.EventType.DialogMessageReceived, processMessage)
         }
     );
     // evt.completed();
